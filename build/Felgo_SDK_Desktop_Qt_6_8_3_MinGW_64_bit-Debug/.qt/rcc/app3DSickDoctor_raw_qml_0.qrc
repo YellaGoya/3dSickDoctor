@@ -2,6 +2,7 @@
   <qresource prefix="/qt/qml/threeSickDoctor/">
     <file alias="Main.qml">C:/Users/roscoe/Documents/3DSickDoctor/Main.qml</file>
     <file alias="Settings.qml">C:/Users/roscoe/Documents/3DSickDoctor/Settings.qml</file>
+    <file alias="assets/Settings.png">C:/Users/roscoe/Documents/3DSickDoctor/assets/Settings.png</file>
   </qresource>
 </RCC>
 

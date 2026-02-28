@@ -34,6 +34,11 @@ Window {
         settingsWindow.requestActivate()
     }
 
+    // FontLoader {
+    //     id: sf
+    //     source: "assets/Sf.ttf"
+    // }
+
     Repeater {
         model: boxWindow.cols * boxWindow.rows
         Rectangle {

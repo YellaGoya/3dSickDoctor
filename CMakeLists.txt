@@ -18,6 +18,9 @@ qt_add_qml_module(app3DSickDoctor
     QML_FILES
         Main.qml
         Settings.qml
+    RESOURCES
+        assets/Settings.png
+        # assets/Sf.ttf
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
