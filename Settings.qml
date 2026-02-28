@@ -7,16 +7,25 @@ Window {
     title: "3D Sick Doctor 설정"
     width: 300
     height: 280
-    flags: Qt.Window | Qt.WindowStaysOnTopHint
-    modality: Qt.ApplicationModal
-    color: "#2c3e50"
+    minimumWidth: 300
+    minimumHeight: 280
+    maximumWidth: 300
+    maximumHeight: 280
+    flags: Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint
+    // modality: Qt.ApplicationModal
+    color: "transparent"
+
+    Rectangle {
+        anchors.fill: parent
+        radius: 16
+        color: "#2c3e50"
+    }
 
     // 설정 값 (외부에서 바인딩)
-    property alias dotColor: colorPicker.selectedColor
-    property alias dotOpacity: opacitySlider.value
+    property color dotColor: "#98db80"
+    property real dotOpacity: 0.5
     property alias spacing: spacingSpinBox.value
     property alias padding: paddingSpinBox.value
-
     signal settingsChanged()
 
     ColumnLayout {
@@ -28,18 +37,52 @@ Window {
         RowLayout {
             Layout.fillWidth: true
             Label { text: "점 색상"; color: "white"; Layout.preferredWidth: 80 }
-            Rectangle {
-                id: colorPicker
-                property color selectedColor: "#98db80"
-                width: 100
-                height: 30
-                color: selectedColor
-                radius: 5
-                border.color: "white"
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: colorDialog.visible = true
+            TextField {
+                id: colorInput
+                text: "#98db80"
+                maximumLength: 7
+                Layout.preferredWidth: 100
+                color: "white"
+                font.family: "monospace"
+                horizontalAlignment: Text.AlignHCenter
+                background: Rectangle {
+                    color: "#34495e"
+                    radius: 5
+                    border.color: parent.activeFocus ? "white" : "#7f8c8d"
                 }
+
+                validator: RegularExpressionValidator {
+                    regularExpression: /^[#0-9A-Fa-f]{0,7}$/
+                }
+
+                onTextChanged: {
+                    // # 없이 입력 시작하면 자동 추가
+                    if (text.length > 0 && text[0] !== '#') {
+                        text = '#' + text.replace(/[^0-9A-Fa-f#]/g, '')
+                    }
+                    // #이 중간에 들어가면 제거
+                    if (text.lastIndexOf('#') > 0) {
+                        text = '#' + text.replace(/#/g, '')
+                    }
+                    // 유효한 색상이면 미리보기 업데이트
+                    if (text.match(/^#[0-9A-Fa-f]{6}$/)) {
+                        colorPreview.color = text
+                    }
+                }
+
+                onAccepted: {
+                    if (text.match(/^#[0-9A-Fa-f]{6}$/)) {
+                        settingsWindow.dotColor = text
+                    }
+                }
+            }
+            Rectangle {
+                id: colorPreview
+                width: 30
+                height: 30
+                radius: 5
+                color: "#98db80"
+                border.color: "white"
             }
         }
 
@@ -47,15 +90,32 @@ Window {
         RowLayout {
             Layout.fillWidth: true
             Label { text: "불투명도"; color: "white"; Layout.preferredWidth: 80 }
-            Slider {
-                id: opacitySlider
-                from: 0.1
-                to: 1.0
-                value: 0.5
-                stepSize: 0.1
-                Layout.fillWidth: true
+            TextField {
+                id: opacityInput
+                text: "50"
+                maximumLength: 3
+                Layout.preferredWidth: 60
+                color: "white"
+                font.family: "monospace"
+                horizontalAlignment: Text.AlignHCenter
+                background: Rectangle {
+                    color: "#34495e"
+                    radius: 5
+                    border.color: parent.activeFocus ? "white" : "#7f8c8d"
+                }
+
+                validator: IntValidator { bottom: 0; top: 100 }
+
+                onTextChanged: {
+                    // 숫자만 허용
+                    text = text.replace(/[^0-9]/g, '')
+                    // 범위 제한
+                    if (text.length > 0 && parseInt(text) > 100) {
+                        text = "100"
+                    }
+                }
             }
-            Label { text: opacitySlider.value.toFixed(1); color: "white"; Layout.preferredWidth: 30 }
+            Label { text: "%"; color: "white" }
         }
 
         // 간격
@@ -94,8 +154,14 @@ Window {
                 text: "적용"
                 Layout.fillWidth: true
                 onClicked: {
+                    // 색상 적용
+                    if (colorInput.text.match(/^#[0-9A-Fa-f]{6}$/)) {
+                        settingsWindow.dotColor = colorInput.text
+                    }
+                    // 불투명도 적용 (소수점 2자리)
+                    var percent = parseInt(opacityInput.text) || 0
+                    settingsWindow.dotOpacity = Math.round(percent) / 100
                     settingsWindow.settingsChanged()
-                    // settingsWindow.close()
                 }
             }
             Button {
@@ -106,46 +172,13 @@ Window {
         }
     }
 
-    // 색상 선택 다이얼로그
-    Rectangle {
-        id: colorDialog
-        visible: false
-        anchors.centerIn: parent
-        width: 200
-        height: 150
-        color: "#34495e"
-        radius: 10
-        border.color: "white"
+    // 외부에서 색상 설정할 때 동기화
+    onDotColorChanged: {
+        colorInput.text = dotColor.toString().toUpperCase()
+        colorPreview.color = dotColor
+    }
 
-        Grid {
-            anchors.centerIn: parent
-            columns: 3
-            spacing: 10
-
-            Repeater {
-                model: ["#98db80", "#3498db", "#e74c3c", "#f1c40f", "#9b59b6", "#1abc9c"]
-                Rectangle {
-                    width: 40
-                    height: 40
-                    radius: 5
-                    color: modelData
-                    border.color: colorPicker.selectedColor.toString() === modelData ? "white" : "transparent"
-                    border.width: 2
-                    MouseArea {
-                        anchors.fill: parent
-                        cursorShape: Qt.PointingHandCursor
-                        onClicked: {
-                            colorPicker.selectedColor = modelData
-                            colorDialog.visible = false
-                        }
-                    }
-                }
-            }
-        }
-
-        MouseArea {
-            anchors.fill: parent
-            onClicked: colorDialog.visible = false
-        }
+    onDotOpacityChanged: {
+        opacityInput.text = Math.round(dotOpacity * 100)
     }
 }

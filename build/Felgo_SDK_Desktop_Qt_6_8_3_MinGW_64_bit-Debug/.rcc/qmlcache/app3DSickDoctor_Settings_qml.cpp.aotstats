@@ -6,154 +6,122 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 12,
-                        "durationMicroseconds": 287,
+                        "durationMicroseconds": 338,
                         "errorMessage": "",
                         "functionName": "flags",
-                        "line": 10
+                        "line": 14
                     },
                     {
-                        "codegenSuccessfull": true,
-                        "column": 15,
-                        "durationMicroseconds": 66,
-                        "errorMessage": "",
-                        "functionName": "modality",
-                        "line": 11
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 29,
+                        "errorMessage": "Cannot retrieve a non-object type by ID: colorInput",
+                        "functionName": "onDotColorChanged",
+                        "line": 176
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 19,
+                        "errorMessage": "Cannot retrieve a non-object type by ID: opacityInput",
+                        "functionName": "onDotOpacityChanged",
+                        "line": 181
                     },
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 63,
+                        "durationMicroseconds": 72,
                         "errorMessage": "",
                         "functionName": "fill",
-                        "line": 23
+                        "line": 19
                     },
                     {
                         "codegenSuccessfull": true,
-                        "column": 24,
-                        "durationMicroseconds": 60,
-                        "errorMessage": "",
-                        "functionName": "color",
-                        "line": 36
-                    },
-                    {
-                        "codegenSuccessfull": true,
-                        "column": 32,
-                        "durationMicroseconds": 115,
-                        "errorMessage": "",
-                        "functionName": "onClicked",
-                        "line": 41
-                    },
-                    {
-                        "codegenSuccessfull": true,
-                        "column": 35,
-                        "durationMicroseconds": 47,
+                        "column": 23,
+                        "durationMicroseconds": 64,
                         "errorMessage": "",
                         "functionName": "fill",
-                        "line": 40
+                        "line": 32
                     },
                     {
                         "codegenSuccessfull": false,
-                        "column": 27,
+                        "column": 38,
                         "durationMicroseconds": 0,
-                        "errorMessage": "Could not find property \"text\".",
-                        "functionName": "text",
+                        "errorMessage": "Could not find property \"horizontalAlignment\".",
+                        "functionName": "horizontalAlignment",
+                        "line": 47
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 32,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find signal \"textChanged\".",
+                        "functionName": "onTextChanged",
                         "line": 58
                     },
                     {
                         "codegenSuccessfull": false,
-                        "column": 28,
+                        "column": 29,
                         "durationMicroseconds": 0,
-                        "errorMessage": "Could not find signal \"clicked\".",
-                        "functionName": "onClicked",
-                        "line": 96
-                    },
-                    {
-                        "codegenSuccessfull": false,
-                        "column": 28,
-                        "durationMicroseconds": 0,
-                        "errorMessage": "Could not find signal \"clicked\".",
-                        "functionName": "onClicked",
-                        "line": 104
-                    },
-                    {
-                        "codegenSuccessfull": true,
-                        "column": 27,
-                        "durationMicroseconds": 49,
-                        "errorMessage": "",
-                        "functionName": "centerIn",
-                        "line": 113
-                    },
-                    {
-                        "codegenSuccessfull": true,
-                        "column": 31,
-                        "durationMicroseconds": 54,
-                        "errorMessage": "",
-                        "functionName": "centerIn",
-                        "line": 121
-                    },
-                    {
-                        "codegenSuccessfull": false,
-                        "column": 24,
-                        "durationMicroseconds": 248,
-                        "errorMessage": "Cannot generate efficient code for storing an array in a non-sequence type",
-                        "functionName": "model",
-                        "line": 126
-                    },
-                    {
-                        "codegenSuccessfull": false,
-                        "column": 28,
-                        "durationMicroseconds": 123,
-                        "errorMessage": "Cannot access value for name modelData",
-                        "functionName": "color",
-                        "line": 131
+                        "errorMessage": "Could not find signal \"accepted\".",
+                        "functionName": "onAccepted",
+                        "line": 73
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 35,
-                        "durationMicroseconds": 37,
-                        "errorMessage": "Cannot access value for name colorPicker",
+                        "durationMicroseconds": 16,
+                        "errorMessage": "Cannot access value for name parent",
                         "functionName": "color",
-                        "line": 132
-                    },
-                    {
-                        "codegenSuccessfull": true,
-                        "column": 38,
-                        "durationMicroseconds": 70,
-                        "errorMessage": "",
-                        "functionName": "cursorShape",
-                        "line": 136
+                        "line": 51
                     },
                     {
                         "codegenSuccessfull": false,
-                        "column": 36,
-                        "durationMicroseconds": 21,
-                        "errorMessage": "Cannot access value for name colorPicker",
+                        "column": 40,
+                        "durationMicroseconds": 15,
+                        "errorMessage": "Instruction \"generate_MoveRegExp\" not implemented",
+                        "functionName": "regularExpression",
+                        "line": 55
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 38,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"horizontalAlignment\".",
+                        "functionName": "horizontalAlignment",
+                        "line": 100
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 32,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find signal \"textChanged\".",
+                        "functionName": "onTextChanged",
+                        "line": 109
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 35,
+                        "durationMicroseconds": 8,
+                        "errorMessage": "Cannot access value for name parent",
+                        "functionName": "color",
+                        "line": 104
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find signal \"clicked\".",
                         "functionName": "onClicked",
-                        "line": 137
+                        "line": 156
                     },
                     {
-                        "codegenSuccessfull": true,
-                        "column": 39,
-                        "durationMicroseconds": 44,
-                        "errorMessage": "",
-                        "functionName": "fill",
-                        "line": 135
-                    },
-                    {
-                        "codegenSuccessfull": true,
-                        "column": 24,
-                        "durationMicroseconds": 88,
-                        "errorMessage": "",
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find signal \"clicked\".",
                         "functionName": "onClicked",
-                        "line": 148
-                    },
-                    {
-                        "codegenSuccessfull": true,
-                        "column": 27,
-                        "durationMicroseconds": 39,
-                        "errorMessage": "",
-                        "functionName": "fill",
-                        "line": 147
+                        "line": 170
                     }
                 ],
                 "filepath": "C:/Users/roscoe/Documents/3DSickDoctor/Settings.qml"

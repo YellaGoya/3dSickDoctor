@@ -8,7 +8,7 @@ Window {
     height: Screen.height
     x: 0
     y: 0
-    flags: Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.WindowTransparentForInput
+    flags: Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.WindowTransparentForInput | Qt.Tool
     color: "transparent"
     title: qsTr("3D Sick Doctor")
 
