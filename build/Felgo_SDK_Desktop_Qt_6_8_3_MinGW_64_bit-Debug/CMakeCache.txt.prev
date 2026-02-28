@@ -14,15 +14,6 @@
 # EXTERNAL cache entries
 ########################
 
-//Value Computed by CMake
-3DSickDoctor_BINARY_DIR:STATIC=C:/Users/roscoe/Documents/3DSickDoctor/build/Felgo_SDK_Desktop_Qt_6_8_3_MinGW_64_bit-Debug
-
-//Value Computed by CMake
-3DSickDoctor_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-3DSickDoctor_SOURCE_DIR:STATIC=C:/Users/roscoe/Documents/3DSickDoctor
-
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=C:/Felgo/Tools/mingw1310_64/bin/addr2line.exe
 
@@ -141,7 +132,7 @@ CMAKE_INSTALL_MANDIR:PATH=
 CMAKE_INSTALL_OLDINCLUDEDIR:PATH=/usr/include
 
 //Install path prefix, prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/3DSickDoctor
+CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/threeSickDoctor
 
 //Run-time variable data (LOCALSTATEDIR/run)
 CMAKE_INSTALL_RUNSTATEDIR:PATH=
@@ -203,7 +194,7 @@ CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 CMAKE_PROJECT_INCLUDE_BEFORE:FILEPATH=C:/Users/roscoe/Documents/3DSickDoctor/build/Felgo_SDK_Desktop_Qt_6_8_3_MinGW_64_bit-Debug/.qtc/package-manager/auto-setup.cmake
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=3DSickDoctor
+CMAKE_PROJECT_NAME:STATIC=threeSickDoctor
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION:STATIC=0.1
@@ -405,6 +396,15 @@ Vulkan_LIBRARY:FILEPATH=Vulkan_LIBRARY-NOTFOUND
 
 //Path to a program.
 WINDEPLOYQT_EXECUTABLE:FILEPATH=C:/Felgo/Felgo/mingw_64/bin/windeployqt.exe
+
+//Value Computed by CMake
+threeSickDoctor_BINARY_DIR:STATIC=C:/Users/roscoe/Documents/3DSickDoctor/build/Felgo_SDK_Desktop_Qt_6_8_3_MinGW_64_bit-Debug
+
+//Value Computed by CMake
+threeSickDoctor_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+threeSickDoctor_SOURCE_DIR:STATIC=C:/Users/roscoe/Documents/3DSickDoctor
 
 
 ########################
@@ -1317,6 +1317,6 @@ Vulkan_LIBRARY-ADVANCED:INTERNAL=1
 //linker supports push/pop state
 _CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED:INTERNAL=TRUE
 //CMAKE_INSTALL_PREFIX during last run
-_GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=C:/Program Files (x86)/3DSickDoctor
+_GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=C:/Program Files (x86)/threeSickDoctor
 __qt_qml_macros_module_base_dir:INTERNAL=C:/Felgo/Felgo/mingw_64/lib/cmake/Qt6Qml
 

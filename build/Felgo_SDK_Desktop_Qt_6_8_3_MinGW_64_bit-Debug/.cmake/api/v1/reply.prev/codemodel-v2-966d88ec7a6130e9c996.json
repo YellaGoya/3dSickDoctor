@@ -1,0 +1,196 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-a4f2770a746a15d1c4f8.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "threeSickDoctor",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "all_aotstats::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_aotstats-Debug-11a58a394485135fea3a.json",
+					"name" : "all_aotstats",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmllint::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmllint-Debug-b719ddd7cc1f88858da9.json",
+					"name" : "all_qmllint",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmllint_json::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmllint_json-Debug-528677dcbe9a8bd77744.json",
+					"name" : "all_qmllint_json",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmllint_module::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmllint_module-Debug-10e994c3769aa1ec374a.json",
+					"name" : "all_qmllint_module",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmltyperegistrations::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmltyperegistrations-Debug-035a238d68b08487a7c2.json",
+					"name" : "all_qmltyperegistrations",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "app3DSickDoctor::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-app3DSickDoctor-Debug-12dd0389ddb82f1d32ff.json",
+					"name" : "app3DSickDoctor",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "app3DSickDoctor_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-app3DSickDoctor_autogen-Debug-1f558b0fb91f8ad17d29.json",
+					"name" : "app3DSickDoctor_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "app3DSickDoctor_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-app3DSickDoctor_autogen_timestamp_deps-Debug-c9001d684f4cab300c2f.json",
+					"name" : "app3DSickDoctor_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "app3DSickDoctor_copy_qml::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-app3DSickDoctor_copy_qml-Debug-990eca50515677c5b8fb.json",
+					"name" : "app3DSickDoctor_copy_qml",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "app3DSickDoctor_copy_res::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-app3DSickDoctor_copy_res-Debug-6f2ff37e8255743a66b9.json",
+					"name" : "app3DSickDoctor_copy_res",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "app3DSickDoctor_qmlimportscan::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-app3DSickDoctor_qmlimportscan-Debug-3c5dca43e9c9ee836a31.json",
+					"name" : "app3DSickDoctor_qmlimportscan",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "app3DSickDoctor_qmllint::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-app3DSickDoctor_qmllint-Debug-86f86446f48b9f07d601.json",
+					"name" : "app3DSickDoctor_qmllint",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "app3DSickDoctor_qmllint_json::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-app3DSickDoctor_qmllint_json-Debug-8a61a1247527d86701ac.json",
+					"name" : "app3DSickDoctor_qmllint_json",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "app3DSickDoctor_qmllint_module::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-app3DSickDoctor_qmllint_module-Debug-22a5d0c706a3bb8a6086.json",
+					"name" : "app3DSickDoctor_qmllint_module",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "app3DSickDoctor_qmltyperegistration::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-app3DSickDoctor_qmltyperegistration-Debug-2d41d93db3e84aa03f98.json",
+					"name" : "app3DSickDoctor_qmltyperegistration",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "module_app3DSickDoctor_aotstats_target::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-module_app3DSickDoctor_aotstats_target-Debug-39108c09679447c4b053.json",
+					"name" : "module_app3DSickDoctor_aotstats_target",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/roscoe/Documents/3DSickDoctor/build/Felgo_SDK_Desktop_Qt_6_8_3_MinGW_64_bit-Debug",
+		"source" : "C:/Users/roscoe/Documents/3DSickDoctor"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

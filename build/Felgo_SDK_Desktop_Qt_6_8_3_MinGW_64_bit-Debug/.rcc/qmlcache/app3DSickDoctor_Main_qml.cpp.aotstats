@@ -5,107 +5,179 @@
                 "entries": [
                     {
                         "codegenSuccessfull": true,
-                        "column": 8,
-                        "durationMicroseconds": 654,
+                        "column": 12,
+                        "durationMicroseconds": 195,
                         "errorMessage": "",
-                        "functionName": "x",
-                        "line": 9
+                        "functionName": "width",
+                        "line": 7
                     },
                     {
                         "codegenSuccessfull": true,
-                        "column": 8,
-                        "durationMicroseconds": 155,
+                        "column": 13,
+                        "durationMicroseconds": 63,
                         "errorMessage": "",
-                        "functionName": "y",
-                        "line": 10
+                        "functionName": "height",
+                        "line": 8
                     },
                     {
                         "codegenSuccessfull": true,
                         "column": 12,
-                        "durationMicroseconds": 271,
+                        "durationMicroseconds": 220,
                         "errorMessage": "",
                         "functionName": "flags",
                         "line": 11
                     },
                     {
                         "codegenSuccessfull": true,
-                        "column": 23,
-                        "durationMicroseconds": 48,
+                        "column": 24,
+                        "durationMicroseconds": 264,
                         "errorMessage": "",
-                        "functionName": "fill",
-                        "line": 16
+                        "functionName": "cols",
+                        "line": 20
                     },
                     {
                         "codegenSuccessfull": true,
-                        "column": 31,
-                        "durationMicroseconds": 130,
+                        "column": 24,
+                        "durationMicroseconds": 253,
                         "errorMessage": "",
-                        "functionName": "centerIn",
+                        "functionName": "rows",
                         "line": 21
                     },
                     {
                         "codegenSuccessfull": true,
-                        "column": 12,
-                        "durationMicroseconds": 233,
+                        "column": 28,
+                        "durationMicroseconds": 287,
                         "errorMessage": "",
-                        "functionName": "x",
-                        "line": 35
-                    },
-                    {
-                        "codegenSuccessfull": true,
-                        "column": 16,
-                        "durationMicroseconds": 234,
-                        "errorMessage": "",
-                        "functionName": "flags",
-                        "line": 37
-                    },
-                    {
-                        "codegenSuccessfull": true,
-                        "column": 20,
-                        "durationMicroseconds": 400,
-                        "errorMessage": "",
-                        "functionName": "color",
-                        "line": 43
-                    },
-                    {
-                        "codegenSuccessfull": true,
-                        "column": 27,
-                        "durationMicroseconds": 71,
-                        "errorMessage": "",
-                        "functionName": "fill",
-                        "line": 42
-                    },
-                    {
-                        "codegenSuccessfull": true,
-                        "column": 35,
-                        "durationMicroseconds": 61,
-                        "errorMessage": "",
-                        "functionName": "centerIn",
-                        "line": 47
-                    },
-                    {
-                        "codegenSuccessfull": true,
-                        "column": 30,
-                        "durationMicroseconds": 89,
-                        "errorMessage": "",
-                        "functionName": "cursorShape",
-                        "line": 57
+                        "functionName": "offsetX",
+                        "line": 22
                     },
                     {
                         "codegenSuccessfull": true,
                         "column": 28,
-                        "durationMicroseconds": 151,
+                        "durationMicroseconds": 291,
+                        "errorMessage": "",
+                        "functionName": "offsetY",
+                        "line": 23
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 130,
+                        "errorMessage": "",
+                        "functionName": "model",
+                        "line": 26
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 38,
+                        "errorMessage": "Cannot access value for name boxWindow",
+                        "functionName": "width",
+                        "line": 28
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 12,
+                        "errorMessage": "Cannot access value for name boxWindow",
+                        "functionName": "height",
+                        "line": 29
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 18,
+                        "errorMessage": "Cannot access value for name boxWindow",
+                        "functionName": "radius",
+                        "line": 30
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 22,
+                        "durationMicroseconds": 17,
+                        "errorMessage": "Cannot access value for name boxWindow",
+                        "functionName": "opacity",
+                        "line": 32
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 15,
+                        "errorMessage": "Cannot access value for name boxWindow",
+                        "functionName": "x",
+                        "line": 33
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 22,
+                        "errorMessage": "Cannot access value for name boxWindow",
+                        "functionName": "y",
+                        "line": 34
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 12,
+                        "durationMicroseconds": 140,
+                        "errorMessage": "",
+                        "functionName": "x",
+                        "line": 43
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 117,
+                        "errorMessage": "",
+                        "functionName": "flags",
+                        "line": 45
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 220,
+                        "errorMessage": "",
+                        "functionName": "color",
+                        "line": 51
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 44,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 50
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 50,
+                        "errorMessage": "",
+                        "functionName": "centerIn",
+                        "line": 55
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 30,
+                        "durationMicroseconds": 56,
+                        "errorMessage": "",
+                        "functionName": "cursorShape",
+                        "line": 65
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 88,
                         "errorMessage": "",
                         "functionName": "onClicked",
-                        "line": 58
+                        "line": 66
                     },
                     {
                         "codegenSuccessfull": true,
                         "column": 31,
-                        "durationMicroseconds": 63,
+                        "durationMicroseconds": 46,
                         "errorMessage": "",
                         "functionName": "fill",
-                        "line": 55
+                        "line": 63
                     }
                 ],
                 "filepath": "C:/Users/roscoe/Documents/3DSickDoctor/Main.qml"
