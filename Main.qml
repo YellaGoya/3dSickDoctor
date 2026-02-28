@@ -13,6 +13,7 @@ Window {
     title: qsTr("3D Sick Doctor")
 
     property int dotSize: 7
+    property color dotColor: "#98db80"
     property int spacing: 50
     property int padding: 50
     property real dotOpacity: 0.5
@@ -22,16 +23,38 @@ Window {
     property real offsetX: padding + (width - padding * 2 - (cols - 1) * spacing) / 2
     property real offsetY: padding + (height - padding * 2 - (rows - 1) * spacing) / 2
 
+    // 설정창 열기 함수
+    function openSettings() {
+        settingsWindow.dotColor = boxWindow.dotColor
+        settingsWindow.dotOpacity = boxWindow.dotOpacity
+        settingsWindow.spacing = boxWindow.spacing
+        settingsWindow.padding = boxWindow.padding
+        settingsWindow.show()
+        settingsWindow.raise()
+        settingsWindow.requestActivate()
+    }
+
     Repeater {
         model: boxWindow.cols * boxWindow.rows
         Rectangle {
             width: boxWindow.dotSize
             height: boxWindow.dotSize
             radius: boxWindow.dotSize / 2 + 1
-            color: "#98db80"
+            color: boxWindow.dotColor
             opacity: boxWindow.dotOpacity
             x: boxWindow.offsetX + (index % boxWindow.cols) * boxWindow.spacing - boxWindow.dotSize / 2
             y: boxWindow.offsetY + Math.floor(index / boxWindow.cols) * boxWindow.spacing - boxWindow.dotSize / 2
+        }
+    }
+
+    // 설정창
+    Settings {
+        id: settingsWindow
+        onSettingsChanged: {
+            boxWindow.dotColor = dotColor
+            boxWindow.dotOpacity = dotOpacity
+            boxWindow.spacing = spacing
+            boxWindow.padding = padding
         }
     }
 }

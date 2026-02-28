@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 12,
-                        "durationMicroseconds": 195,
+                        "durationMicroseconds": 397,
                         "errorMessage": "",
                         "functionName": "width",
                         "line": 7
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 13,
-                        "durationMicroseconds": 63,
+                        "durationMicroseconds": 97,
                         "errorMessage": "",
                         "functionName": "height",
                         "line": 8
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 12,
-                        "durationMicroseconds": 220,
+                        "durationMicroseconds": 363,
                         "errorMessage": "",
                         "functionName": "flags",
                         "line": 11
@@ -30,42 +30,50 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 24,
-                        "durationMicroseconds": 264,
+                        "durationMicroseconds": 427,
                         "errorMessage": "",
                         "functionName": "cols",
-                        "line": 20
-                    },
-                    {
-                        "codegenSuccessfull": true,
-                        "column": 24,
-                        "durationMicroseconds": 253,
-                        "errorMessage": "",
-                        "functionName": "rows",
                         "line": 21
                     },
                     {
                         "codegenSuccessfull": true,
-                        "column": 28,
-                        "durationMicroseconds": 287,
+                        "column": 24,
+                        "durationMicroseconds": 295,
                         "errorMessage": "",
-                        "functionName": "offsetX",
+                        "functionName": "rows",
                         "line": 22
                     },
                     {
                         "codegenSuccessfull": true,
                         "column": 28,
-                        "durationMicroseconds": 291,
+                        "durationMicroseconds": 379,
                         "errorMessage": "",
-                        "functionName": "offsetY",
+                        "functionName": "offsetX",
                         "line": 23
                     },
                     {
                         "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 279,
+                        "errorMessage": "",
+                        "functionName": "offsetY",
+                        "line": 24
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 49,
+                        "errorMessage": "Type  stored as QQuickWindowQmlImpl does not have a property dotOpacity for writing",
+                        "functionName": "openSettings",
+                        "line": 27
+                    },
+                    {
+                        "codegenSuccessfull": true,
                         "column": 16,
-                        "durationMicroseconds": 130,
+                        "durationMicroseconds": 143,
                         "errorMessage": "",
                         "functionName": "model",
-                        "line": 26
+                        "line": 38
                     },
                     {
                         "codegenSuccessfull": false,
@@ -73,111 +81,63 @@
                         "durationMicroseconds": 38,
                         "errorMessage": "Cannot access value for name boxWindow",
                         "functionName": "width",
-                        "line": 28
+                        "line": 40
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 21,
-                        "durationMicroseconds": 12,
+                        "durationMicroseconds": 13,
                         "errorMessage": "Cannot access value for name boxWindow",
                         "functionName": "height",
-                        "line": 29
+                        "line": 41
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 21,
-                        "durationMicroseconds": 18,
+                        "durationMicroseconds": 14,
                         "errorMessage": "Cannot access value for name boxWindow",
                         "functionName": "radius",
-                        "line": 30
+                        "line": 42
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 11,
+                        "errorMessage": "Cannot access value for name boxWindow",
+                        "functionName": "color",
+                        "line": 43
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 22,
-                        "durationMicroseconds": 17,
+                        "durationMicroseconds": 10,
                         "errorMessage": "Cannot access value for name boxWindow",
                         "functionName": "opacity",
-                        "line": 32
+                        "line": 44
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 16,
-                        "durationMicroseconds": 15,
+                        "durationMicroseconds": 14,
                         "errorMessage": "Cannot access value for name boxWindow",
                         "functionName": "x",
-                        "line": 33
-                    },
-                    {
-                        "codegenSuccessfull": false,
-                        "column": 16,
-                        "durationMicroseconds": 22,
-                        "errorMessage": "Cannot access value for name boxWindow",
-                        "functionName": "y",
-                        "line": 34
-                    },
-                    {
-                        "codegenSuccessfull": true,
-                        "column": 12,
-                        "durationMicroseconds": 140,
-                        "errorMessage": "",
-                        "functionName": "x",
-                        "line": 43
-                    },
-                    {
-                        "codegenSuccessfull": true,
-                        "column": 16,
-                        "durationMicroseconds": 117,
-                        "errorMessage": "",
-                        "functionName": "flags",
                         "line": 45
                     },
                     {
-                        "codegenSuccessfull": true,
-                        "column": 20,
-                        "durationMicroseconds": 220,
-                        "errorMessage": "",
-                        "functionName": "color",
-                        "line": 51
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 19,
+                        "errorMessage": "Cannot access value for name boxWindow",
+                        "functionName": "y",
+                        "line": 46
                     },
                     {
-                        "codegenSuccessfull": true,
-                        "column": 27,
-                        "durationMicroseconds": 44,
-                        "errorMessage": "",
-                        "functionName": "fill",
-                        "line": 50
-                    },
-                    {
-                        "codegenSuccessfull": true,
-                        "column": 35,
-                        "durationMicroseconds": 50,
-                        "errorMessage": "",
-                        "functionName": "centerIn",
-                        "line": 55
-                    },
-                    {
-                        "codegenSuccessfull": true,
-                        "column": 30,
-                        "durationMicroseconds": 56,
-                        "errorMessage": "",
-                        "functionName": "cursorShape",
-                        "line": 65
-                    },
-                    {
-                        "codegenSuccessfull": true,
+                        "codegenSuccessfull": false,
                         "column": 28,
-                        "durationMicroseconds": 88,
-                        "errorMessage": "",
-                        "functionName": "onClicked",
-                        "line": 66
-                    },
-                    {
-                        "codegenSuccessfull": true,
-                        "column": 31,
-                        "durationMicroseconds": 46,
-                        "errorMessage": "",
-                        "functionName": "fill",
-                        "line": 63
+                        "durationMicroseconds": 34,
+                        "errorMessage": "Cannot access value for name dotOpacity",
+                        "functionName": "onSettingsChanged",
+                        "line": 53
                     }
                 ],
                 "filepath": "C:/Users/roscoe/Documents/3DSickDoctor/Main.qml"

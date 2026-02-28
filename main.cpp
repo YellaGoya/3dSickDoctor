@@ -78,5 +78,13 @@ int main(int argc, char *argv[])
         }
     });
 
+    // 설정창 연결
+    QObject::connect(settingsAction, &QAction::triggered, [&engine]() {
+        auto roots = engine.rootObjects();
+        for (auto* root : roots) {
+            QMetaObject::invokeMethod(root, "openSettings");
+        }
+    });
+
     return app.exec();
 }
