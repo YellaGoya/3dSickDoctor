@@ -28,10 +28,12 @@ int main(int argc, char *argv[])
 
     // 트레이 메뉴
     QMenu trayMenu;
-    QAction* toggleAction = trayMenu.addAction("점 켜기/끄기");
-    QAction* settingsAction = trayMenu.addAction("설정");
+    QAction* toggleAction = trayMenu.addAction("Hide pattern");
+    toggleAction->setCheckable(true);
+    toggleAction->setChecked(false);
+    QAction* settingsAction = trayMenu.addAction("Settings");
     trayMenu.addSeparator();
-    QAction* quitAction = trayMenu.addAction("종료");
+    QAction* quitAction = trayMenu.addAction("Exit");
     trayIcon.setContextMenu(&trayMenu);
     trayIcon.show();
 
@@ -68,8 +70,9 @@ int main(int argc, char *argv[])
 #endif
 
     // 토글 연결
-    QObject::connect(toggleAction, &QAction::triggered, [&engine, &dotsVisible]() {
+    QObject::connect(toggleAction, &QAction::triggered, [&engine, &dotsVisible, toggleAction]() {
         dotsVisible = !dotsVisible;
+        toggleAction->setChecked(!dotsVisible);
         auto roots = engine.rootObjects();
         for (auto* root : roots) {
             if (QQuickWindow* window = qobject_cast<QQuickWindow*>(root)) {
