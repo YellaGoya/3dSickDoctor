@@ -1,0 +1,14 @@
+-rootPath
+C:/Users/roscoe/Documents/3DSickDoctor
+-cmake-output
+-output-file
+C:/Users/roscoe/Documents/3DSickDoctor/build/Felgo_SDK_Desktop_Qt_6_8_3_MinGW_64_bit-Debug/.qt/qml_imports/app3DSickDoctor_conf.cmake
+-importPath
+C:/Users/roscoe/Documents/3DSickDoctor/build/Felgo_SDK_Desktop_Qt_6_8_3_MinGW_64_bit-Debug/threeSickDoctor
+-importPath
+C:/Users/roscoe/Documents/3DSickDoctor/build/Felgo_SDK_Desktop_Qt_6_8_3_MinGW_64_bit-Debug
+-importPath
+C:/Felgo/Felgo/mingw_64/qml
+-qrcFiles
+C:/Users/roscoe/Documents/3DSickDoctor/build/Felgo_SDK_Desktop_Qt_6_8_3_MinGW_64_bit-Debug/.qt/rcc/qmake_threeSickDoctor.qrc
+C:/Users/roscoe/Documents/3DSickDoctor/build/Felgo_SDK_Desktop_Qt_6_8_3_MinGW_64_bit-Debug/.qt/rcc/app3DSickDoctor_raw_qml_0.qrc

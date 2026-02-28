@@ -1,0 +1,5 @@
+module threeSickDoctor
+typeinfo app3DSickDoctor.qmltypes
+prefer :/qt/qml/threeSickDoctor/
+Main 1.0 Main.qml
+

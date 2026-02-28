@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/qt/qml/threeSickDoctor">
+    <file alias="qmldir">C:/Users/roscoe/Documents/3DSickDoctor/build/Felgo_SDK_Desktop_Qt_6_8_3_MinGW_64_bit-Debug/threeSickDoctor/qmldir</file>
+  </qresource>
+</RCC>
+

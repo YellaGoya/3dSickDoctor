@@ -1,0 +1,10 @@
+-I
+C:/Users/roscoe/Documents/3DSickDoctor/build/Felgo_SDK_Desktop_Qt_6_8_3_MinGW_64_bit-Debug
+-I
+C:/Felgo/Felgo/mingw_64/qml
+--resource
+C:/Users/roscoe/Documents/3DSickDoctor/build/Felgo_SDK_Desktop_Qt_6_8_3_MinGW_64_bit-Debug/.qt/rcc/qmake_threeSickDoctor.qrc
+--resource
+C:/Users/roscoe/Documents/3DSickDoctor/build/Felgo_SDK_Desktop_Qt_6_8_3_MinGW_64_bit-Debug/.qt/rcc/app3DSickDoctor_raw_qml_0.qrc
+--module
+threeSickDoctor

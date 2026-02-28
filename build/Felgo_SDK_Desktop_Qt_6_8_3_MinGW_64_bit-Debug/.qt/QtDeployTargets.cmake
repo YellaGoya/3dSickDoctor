@@ -1,0 +1,3 @@
+set(__QT_DEPLOY_TARGET_app3DSickDoctor_FILE C:/Users/roscoe/Documents/3DSickDoctor/build/Felgo_SDK_Desktop_Qt_6_8_3_MinGW_64_bit-Debug/app3DSickDoctor.exe)
+set(__QT_DEPLOY_TARGET_app3DSickDoctor_TYPE EXECUTABLE)
+set(__QT_DEPLOY_TARGET_app3DSickDoctor_RUNTIME_DLLS C:/Felgo/Felgo/mingw_64/bin/Qt6Quick.dll;C:/Felgo/Felgo/mingw_64/bin/Qt6QmlMeta.dll;C:/Felgo/Felgo/mingw_64/bin/Qt6QmlWorkerScript.dll;C:/Felgo/Felgo/mingw_64/bin/Qt6QmlModels.dll;C:/Felgo/Felgo/mingw_64/bin/Qt6Qml.dll;C:/Felgo/Felgo/mingw_64/bin/Qt6Network.dll;C:/Felgo/Felgo/mingw_64/bin/Qt6OpenGL.dll;C:/Felgo/Felgo/mingw_64/bin/Qt6Gui.dll;C:/Felgo/Felgo/mingw_64/bin/Qt6Core.dll)
