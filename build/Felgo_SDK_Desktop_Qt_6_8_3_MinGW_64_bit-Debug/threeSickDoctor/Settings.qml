@@ -4,302 +4,507 @@ import QtQuick.Layouts
 import Qt5Compat.GraphicalEffects
 
 Window {
-    id: root
+    id: settings
     title: "3D Sick Doctor 설정"
-    width: 800
-    height: 620
-    minimumWidth: 800
-    minimumHeight: 620
-    maximumWidth: 800
-    maximumHeight: 620
+    width: Screen.width
+    height: Screen.height
+
     flags: Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint
     color: "transparent"
 
-    property color dotColor: "#98db80"
-    property real dotOpacity: 0.5
-    property alias spacing: spacingSpinBox.value
-    property alias padding: paddingSpinBox.value
-
     property int menuIndex: 0
 
-    signal settingsChanged()
+    // ✅ 전체 투명도 (페이드 인/아웃용)
+    opacity: 0
 
-    Rectangle {
-        id: background
-        anchors.centerIn: parent
+    signal save
+
+    Behavior on opacity {
+        NumberAnimation {
+            duration: 250
+            easing.type: Easing.OutCubic
+        }
+    }
+
+    function openWindow() {
+        settings.opacity = 0;
+        popupContainer.scale = 0.95; // 열기 직전 껍데기를 작게 세팅
+
+        settings.show();
+        settings.raise();
+        settings.requestActivate();
+
+        settings.opacity = 1;
+        popupContainer.scale = 1.0; // 뿅! 하고 원래 크기로 커짐
+    }
+
+    function closeWindow() {
+        settings.opacity = 0;
+        popupContainer.scale = 0.95; // 스르륵 작아지면서 사라짐
+        closeTimer.start();
+    }
+
+    function showSaveSuccess() {
+        toastText.text = "Saved successfully ✔️";
+        toastMessage.border.color = "#d0d0d0";
+        closeIcon.visible = false;
+
+        toastMessage.opacity = 1;
+        toastTimer.restart(); // 5초 타이머 시작 (중복 클릭 시 갱신)
+    }
+
+    function showSaveFailed() {
+        toastText.text = "Failed to save ❌";
+        toastMessage.border.color = "#d0d0d0";
+        closeIcon.visible = false;
+
+        toastMessage.opacity = 1;
+        toastTimer.restart(); // 5초 타이머 시작
+    }
+
+    function showNeedSave() {
+        toastText.text = "Need to save 👇";
+        toastMessage.border.color = "#519cff"; // 파란색 테두리
+        closeIcon.visible = true;              // X 버튼 노출
+
+        toastMessage.opacity = 1;
+        toastTimer.stop(); // 타이머를 강제로 꺼서 계속 떠있게 만듦
+    }
+
+    Timer {
+        id: closeTimer
+        interval: 250
+        onTriggered: {
+            // 위치 중앙 초기화
+            popupContainer.x = (settings.width - popupContainer.width) / 2;
+            popupContainer.y = (settings.height - popupContainer.height) / 2;
+            settings.close();
+        }
+    }
+
+    // 바깥 투명 영역 클릭 시 닫기
+    MouseArea {
+        anchors.fill: parent
+        onClicked: settings.closeWindow()
+    }
+
+    // ✅ 그림자와 배경을 하나로 묶어주는 투명 껍데기!
+    Item {
+        id: popupContainer
+
+        // 창 중앙 배치
+        x: (parent.width - width) / 2
+        y: (parent.height - height) / 2
+
         width: 720
         height: 540
 
-        radius: 16
-        color: "#f9f9f9"
+        // 스케일 기준점을 한가운데로 설정
+        transformOrigin: Item.Center
+        scale: 0.95
 
-        border.color: "#e0e0e0"
-        border.width: 1
+        // 껍데기 자체가 커지고 작아지는 애니메이션
+        Behavior on scale {
+            NumberAnimation {
+                duration: 250
+                easing.type: Easing.OutCubic
+            }
+        }
 
-        RowLayout {
-            anchors.fill: parent;
-            anchors.topMargin: 24
-            anchors.bottomMargin: 24
-            anchors.leftMargin: 24
-            anchors.rightMargin: 24
+        // 1. 실제 배경
+        Rectangle {
+            id: background
+            anchors.fill: parent // 껍데기에 꽉 채움
+            radius: 16
+            color: "#f9f9f9"
+            border.color: "#e0e0e0"
+            border.width: 1
 
-            spacing: 24
+            // 드래그 로직
+            MouseArea {
+                anchors.fill: parent
+                onClicked: mouse.accepted = true
+                onWheel: wheel.accepted = true
 
-            Item {
-                id: menuContainer
-                Layout.preferredWidth: 200
-                Layout.fillHeight: true
+                // ✅ 이제 background가 아니라 popupContainer 전체를 끌고 다닙니다!
+                drag.target: popupContainer
+                drag.axis: Drag.XAndYAxis
+            }
 
-                ColumnLayout {
-                    anchors.fill: parent
-                    anchors.leftMargin: 10
-                    spacing: 10
+            RowLayout {
+                anchors.fill: parent
+                anchors.topMargin: 24
+                anchors.bottomMargin: 24
+                anchors.leftMargin: 24
+                anchors.rightMargin: 24
 
-                    RowLayout {
-                        Layout.fillWidth: true
-                        Layout.preferredHeight: 32
-                        Layout.leftMargin: -10
-                        Layout.bottomMargin: 10
-                        spacing: 0
+                spacing: 24
 
-                        Rectangle {
-                            id: iconWrapper
-                            Layout.preferredWidth: 32
-                            Layout.preferredHeight: 32
-                            radius: 8
-                            color: "#fafafa"
+                Item {
+                    id: menuContainer
+                    Layout.preferredWidth: 200
+                    Layout.fillHeight: true
 
-                            Image {
-                                source: "assets/Settings.png"
-                                sourceSize.width: 32
-                                sourceSize.height: 32
-                            }
-                        }
+                    ColumnLayout {
+                        anchors.fill: parent
+                        anchors.leftMargin: 10
+                        spacing: 10
 
-                        DropShadow {
-                            anchors.fill: iconWrapper
-                            source: iconWrapper
-
-                            horizontalOffset: 0
-                            verticalOffset: 4
-                            radius: 16
-                            samples: 33           // 공식 권장값: radius * 2 + 1
-                            color: "#20000000"    // 핵심! 완전한 검은색이 아닌 반투명한 검은색을 써야 합니다.
-                        }
-
-                        Text {
+                        RowLayout {
                             Layout.fillWidth: true
-                            Layout.leftMargin: 10
-
-                            text: "Settings"
-                            color: "#101010"
-                            font.family: sf.name
-                            font.weight: Font.Medium
-                            font.pixelSize: 24
-                        }
-                    }
-
-                    Repeater {
-                        model: ["Dot", "Cross", "About"]
-
-                        delegate: Item {
-                            id: delegateItem
                             Layout.preferredHeight: 32
-                            Layout.fillWidth: true
-
-                            // 1. 현재 아이템의 상태를 판단하기 위한 속성
-                            property bool isSelected: root.menuIndex === index
-                            property bool isHovered: mouseArea.containsMouse
-
-                            // 2. 상태 결정 (선택됨 > 마우스 오버 > 기본)
-                            state: isSelected ? "selected" : (isHovered ? "hovered" : "default")
+                            Layout.leftMargin: -10
+                            Layout.bottomMargin: 20
+                            spacing: 0
 
                             Rectangle {
-                                id: menuBackground
-                                anchors.fill: parent
+                                id: iconWrapper
+                                Layout.preferredWidth: 32
+                                Layout.preferredHeight: 32
                                 radius: 8
                                 color: "#fafafa"
-                                opacity: 0 // 기본값 (states에서 제어됨)
+
+                                Image {
+                                    source: "assets/Settings.png"
+                                    sourceSize.width: 32
+                                    sourceSize.height: 32
+                                }
                             }
 
                             DropShadow {
-                                id: dropShadow
-                                anchors.fill: menuBackground
-                                source: menuBackground
+                                anchors.fill: iconWrapper
+                                source: iconWrapper
+
                                 horizontalOffset: 0
                                 verticalOffset: 4
                                 radius: 16
                                 samples: 33
                                 color: "#20000000"
-                                opacity: 0
-                            }
-
-                            Rectangle {
-                                id: indicator
-                                anchors.left: parent.left
-                                anchors.leftMargin: 12
-                                anchors.verticalCenter: parent.verticalCenter
-                                height: 11
-                                width: 4
-                                radius: 2
-                                color: "#101010"
-                                opacity: 0.4
                             }
 
                             Text {
-                                id: menuText
-                                anchors.left: parent.left
-                                anchors.leftMargin: 20
-                                anchors.verticalCenter: parent.verticalCenter
-                                text: modelData
+                                Layout.fillWidth: true
+                                Layout.leftMargin: 10
+
+                                text: "Settings"
                                 color: "#101010"
+                                font.family: sf.name // 참고: sf 폰트가 Main에 있다면 여기서 바로 못 찾을 수 있으니 안되면 font.family: "sf" 등으로 조정 필요
+                                font.weight: Font.Medium
+                                font.pixelSize: 24
+                            }
+                        }
+
+                        Repeater {
+                            model: ["Dot", "Cross", "About"]
+
+                            delegate: Item {
+                                id: delegateItem
+                                Layout.preferredHeight: 32
+                                Layout.fillWidth: true
+
+                                property bool isSelected: settings.menuIndex === index
+                                property bool isHovered: mouseArea.containsMouse
+
+                                state: isSelected ? "selected" : (isHovered ? "hovered" : "default")
+
+                                Rectangle {
+                                    id: menuBackground
+                                    anchors.fill: parent
+                                    radius: 8
+                                    color: "#fafafa"
+                                    opacity: 0
+                                }
+
+                                DropShadow {
+                                    id: dropShadow
+                                    anchors.fill: menuBackground
+                                    source: menuBackground
+                                    horizontalOffset: 0
+                                    verticalOffset: 4
+                                    radius: 16
+                                    samples: 33
+                                    color: "#20000000"
+                                    opacity: 0
+                                }
+
+                                Rectangle {
+                                    id: indicator
+                                    anchors.left: parent.left
+                                    anchors.leftMargin: 12
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    height: 11
+                                    width: 4
+                                    radius: 2
+                                    color: "#101010"
+                                    opacity: 0.4
+                                }
+
+                                Text {
+                                    id: menuText
+                                    anchors.left: parent.left
+                                    anchors.leftMargin: 20
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    text: modelData
+                                    color: "#101010"
+                                    font.family: sf.name
+                                    font.pixelSize: 16
+                                    font.weight: Font.Normal
+                                    opacity: 0.6
+                                }
+
+                                MouseArea {
+                                    id: mouseArea
+                                    anchors.fill: parent
+                                    hoverEnabled: true
+                                    onClicked: {
+                                        settings.menuIndex = index;
+                                    }
+                                }
+
+                                states: [
+                                    State {
+                                        name: "selected"
+                                        PropertyChanges {
+                                            target: menuBackground
+                                            opacity: 1
+                                            color: "#fafafa"
+                                        }
+                                        PropertyChanges {
+                                            target: dropShadow
+                                            opacity: 1
+                                        }
+                                        PropertyChanges {
+                                            target: indicator
+                                            opacity: 0.7
+                                        }
+                                        PropertyChanges {
+                                            target: menuText
+                                            opacity: 1
+                                        }
+                                    },
+                                    State {
+                                        name: "hovered"
+                                        PropertyChanges {
+                                            target: menuBackground
+                                            opacity: 1
+                                            color: "#f0f0f0"
+                                        }
+                                        PropertyChanges {
+                                            target: dropShadow
+                                            opacity: 0
+                                        }
+                                        PropertyChanges {
+                                            target: indicator
+                                            opacity: 0.55
+                                        }
+                                        PropertyChanges {
+                                            target: menuText
+                                            opacity: 0.8
+                                        }
+                                    },
+                                    State {
+                                        name: "default"
+                                        PropertyChanges {
+                                            target: menuBackground
+                                            opacity: 0
+                                        }
+                                        PropertyChanges {
+                                            target: dropShadow
+                                            opacity: 0
+                                        }
+                                        PropertyChanges {
+                                            target: indicator
+                                            opacity: 0.4
+                                        }
+                                        PropertyChanges {
+                                            target: menuText
+                                            opacity: 0.6
+                                        }
+                                    }
+                                ]
+
+                                transitions: [
+                                    Transition {
+                                        to: "selected"
+                                        NumberAnimation {
+                                            properties: "opacity"
+                                            duration: 150
+                                            easing.type: Easing.OutCubic
+                                        }
+                                        ColorAnimation {
+                                            duration: 250
+                                        }
+                                    },
+                                    Transition {
+                                        from: "selected"
+                                        NumberAnimation {
+                                            properties: "opacity"
+                                            duration: 0
+                                        }
+                                        ColorAnimation {
+                                            duration: 0
+                                        }
+                                    },
+                                    Transition {
+                                        NumberAnimation {
+                                            properties: "opacity"
+                                            duration: 100
+                                        }
+                                        ColorAnimation {
+                                            duration: 100
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+
+                        Item {
+                            Layout.preferredWidth: 1
+                            Layout.fillHeight: true
+                        }
+
+                        Rectangle {
+                            id: saveButton
+                            Layout.fillWidth: true
+                            Layout.leftMargin: -10
+                            Layout.preferredHeight: 32
+                            radius: 6
+                            color: "transparent"
+
+                            Text {
+                                id: saveText
+                                anchors.left: parent.left
+                                anchors.leftMargin: 12
+                                anchors.verticalCenter: parent.verticalCenter
+
+                                text: "Save"
+                                color: "#2378ff"
                                 font.family: sf.name
                                 font.pixelSize: 16
-                                font.weight: Font.Normal
-
-                                opacity: 0.6
+                                font.weight: Font.Medium
                             }
 
                             MouseArea {
-                                id: mouseArea
+                                id: saveMouseArea
                                 anchors.fill: parent
                                 hoverEnabled: true
-                                onClicked: {
-                                    root.menuIndex = index;
-                                }
+                                cursorShape: Qt.PointingHandCursor
+                                onClicked: settings.save()
                             }
 
                             states: [
                                 State {
-                                    name: "selected" // 클릭되어 선택된 상태
-                                    PropertyChanges { target: menuBackground; opacity: 1; color: "#fafafa" }
-                                    PropertyChanges { target: dropShadow; opacity: 1 }
-                                    PropertyChanges { target: indicator; opacity: 0.7 }
-                                    PropertyChanges { target: menuText; opacity: 1 }
+                                    name: "hovered"
+                                    when: saveMouseArea.containsMouse
+                                    PropertyChanges {
+                                        target: saveButton
+                                        color: "#202378ff"
+                                    }
                                 },
                                 State {
-                                    name: "hovered" // 마우스만 올려진 상태
-                                    PropertyChanges { target: menuBackground; opacity: 1; color: "#f0f0f0" } // 살짝 진한 배경
-                                    PropertyChanges { target: dropShadow; opacity: 0 } // 그림자는 숨김
-                                    PropertyChanges { target: indicator; opacity: 0.55 } // 살짝 밝아짐
-                                    PropertyChanges { target: menuText; opacity: 0.8 }   // 글씨 살짝 진해짐
-                                },
-                                State {
-                                    name: "default" // 기본 상태
-                                    PropertyChanges { target: menuBackground; opacity: 0 }
-                                    PropertyChanges { target: dropShadow; opacity: 0 }
-                                    PropertyChanges { target: indicator; opacity: 0.4 }
-                                    PropertyChanges { target: menuText; opacity: 0.6 }
+                                    name: "default"
+                                    when: !saveMouseArea.containsMouse
+                                    PropertyChanges {
+                                        target: saveButton
+                                        color: "transparent"
+                                    }
                                 }
                             ]
+                            transitions: Transition {
+                                ColorAnimation {
+                                    duration: 150
+                                    easing.type: Easing.OutCubic
+                                }
+                            }
 
-                            // --- 4. 전환 애니메이션(Transitions) 정의 ---
-                            transitions: [
-                                Transition {
-                                    to: "selected" // 선택될 때 (켜질 때 부드럽게)
-                                    NumberAnimation { properties: "opacity"; duration: 150; easing.type: Easing.OutCubic }
-                                    ColorAnimation { duration: 250 }
-                                },
-                                Transition {
-                                    from: "selected" // 선택 해제될 때 (잔상 없이 즉시 꺼짐!)
-                                    NumberAnimation { properties: "opacity"; duration: 0 }
-                                    ColorAnimation { duration: 0 }
-                                },
-                                Transition {
-                                    // Hover 되거나 Hover가 풀릴 때의 부드러운 전환
-                                    NumberAnimation { properties: "opacity"; duration: 100 }
-                                    ColorAnimation { duration: 100 }
+                            Rectangle {
+                                id: toastMessage
+
+                                anchors.left: saveButton.left
+                                anchors.right: saveButton.right
+                                anchors.bottom: saveButton.top
+                                anchors.bottomMargin: 6
+
+                                height: 32
+                                radius: 6
+                                color: "#fafafa"
+                                border.width: 1
+
+                                opacity: 0
+
+                                visible: opacity > 0
+
+                                Behavior on opacity {
+                                    NumberAnimation {
+                                        duration: 250
+                                        easing.type: Easing.OutCubic
+                                    }
                                 }
-                            ]
+
+                                Behavior on border.color {
+                                    ColorAnimation {
+                                        duration: 250
+                                        easing.type: Easing.OutCubic
+                                    }
+                                }
+
+                                Text {
+                                    id: toastText
+                                    anchors.left: parent.left
+                                    anchors.leftMargin: 12
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    color: "#101010"
+                                    font.family: sf.name
+                                    font.pixelSize: 14
+                                    opacity: 0.7
+                                }
+
+                                MouseArea {
+                                    id: closeIcon
+                                    anchors.right: parent.right
+                                    anchors.rightMargin: 8
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    width: 20
+                                    height: 20
+                                    cursorShape: Qt.PointingHandCursor
+
+                                    Text {
+                                        anchors.centerIn: parent
+                                        text: "✕"
+                                        color: "#808080"
+                                        font.pixelSize: 12
+                                        font.weight: Font.Bold
+                                    }
+
+                                    onClicked: toastMessage.opacity = 0
+                                }
+
+                                Timer {
+                                    id: toastTimer
+                                    interval: 3000
+                                    onTriggered: toastMessage.opacity = 0
+                                }
+                            }
                         }
-                    }
-
-                    Item {
-                        Layout.preferredWidth: 1
-                        Layout.fillHeight: true
                     }
                 }
-            }
 
-            Rectangle {
-                Layout.preferredWidth: 1
-                Layout.fillHeight: true
+                Rectangle {
+                    Layout.preferredWidth: 1
+                    Layout.fillHeight: true
+                    color: "#e0e0e0"
+                }
 
-                color: "#e0e0e0"
-            }
-
-            ColumnLayout {
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-                spacing: 15
-
-                // 상단 버튼 영역
-                RowLayout {
-                    Layout.preferredHeight: 32 // 높이 고정
+                Item {
+                    Layout.fillHeight: true
                     Layout.fillWidth: true
-                    spacing: 10
 
-                    // --- Apply 버튼 ---
-                    Rectangle {
-                        id: applyButton
-                        Layout.preferredWidth: applyText.implicitWidth + 20
-                        Layout.preferredHeight: 32 // 💡 fillHeight 대신 높이를 명시하여 늘어남 방지!
-                        Layout.leftMargin: -10
-                        radius: 6 // 버튼을 살짝 둥글게
-                        color: "transparent" // 기본 배경은 투명
-
-                        Text {
-                            id: applyText
-                            anchors.centerIn: parent
-                            text: "Apply"
-                            color: "#2378ff"
-                            font.family: sf.name
-                            font.pixelSize: 16
-                            font.weight: Font.Normal
-                        }
-
-                        MouseArea {
-                            id: applyMouseArea
-                            anchors.fill: parent
-                            hoverEnabled: true // Hover 활성화
-                            cursorShape: Qt.PointingHandCursor // 마우스 올리면 손가락 커서로 변경
-                            onClicked: {
-                                if (colorInput.text.match(/^#[0-9A-Fa-f]{6}$/)) {
-                                    settingsWindow.dotColor = colorInput.text
-                                }
-
-                                var percent = parseInt(opacityInput.text) || 0
-                                root.dotOpacity = Math.round(percent) / 100
-                                root.settingsChanged()
-                            }
-                        }
-
-                        // Hover 상태와 애니메이션 적용
-                        states: [
-                            State {
-                                name: "hovered"; when: applyMouseArea.containsMouse
-                                PropertyChanges { target: applyButton; color: "#202378ff" } // 마우스 오버 시 연한 파란색 배경
-                            },
-                            State {
-                                name: "default"; when: !applyMouseArea.containsMouse
-                                PropertyChanges { target: applyButton; color: "transparent" }
-                            }
-                        ]
-                        transitions: Transition {
-                            ColorAnimation { duration: 150; easing.type: Easing.OutCubic }
-                        }
-                    }
-
-                    Item {
-                        Layout.fillWidth: true
-                        Layout.preferredHeight: 1
-                    }
-
-                    // --- Close 버튼 ---
                     Rectangle {
                         id: closeButton
-                        Layout.preferredWidth: closeText.implicitWidth + 20
-                        Layout.preferredHeight: 32 // 💡 여기도 늘어남 방지
+                        anchors.top: parent.top
+                        anchors.right: parent.right
+                        width: closeText.implicitWidth + 20
+                        height: 32
                         radius: 6
                         color: "transparent"
 
@@ -310,7 +515,7 @@ Window {
                             color: "#2378ff"
                             font.family: sf.name
                             font.pixelSize: 16
-                            font.weight: Font.Normal
+                            font.weight: Font.Medium
                         }
 
                         MouseArea {
@@ -318,161 +523,85 @@ Window {
                             anchors.fill: parent
                             hoverEnabled: true
                             cursorShape: Qt.PointingHandCursor
-                            onClicked: root.close()
+                            onClicked: settings.closeWindow()
                         }
 
                         states: [
                             State {
-                                name: "hovered"; when: closeMouseArea.containsMouse
-                                PropertyChanges { target: closeButton; color: "#202378ff" } // 동일한 Hover 효과
+                                name: "hovered"
+                                when: closeMouseArea.containsMouse
+                                PropertyChanges {
+                                    target: closeButton
+                                    color: "#202378ff"
+                                }
                             },
                             State {
-                                name: "default"; when: !closeMouseArea.containsMouse
-                                PropertyChanges { target: closeButton; color: "transparent" }
+                                name: "default"
+                                when: !closeMouseArea.containsMouse
+                                PropertyChanges {
+                                    target: closeButton
+                                    color: "transparent"
+                                }
                             }
                         ]
                         transitions: Transition {
-                            ColorAnimation { duration: 150; easing.type: Easing.OutCubic }
-                        }
-                    }
-                }
-
-                // 점 색상
-                RowLayout {
-                    Layout.fillWidth: true
-                    Label { text: "점 색상"; color: "white"; Layout.preferredWidth: 80 }
-                    TextField {
-                        id: colorInput
-                        text: "#98db80"
-                        maximumLength: 7
-                        Layout.preferredWidth: 100
-                        color: "white"
-                        font.family: "monospace"
-                        horizontalAlignment: Text.AlignHCenter
-                        background: Rectangle {
-                            color: "#34495e"
-                            radius: 5
-                            border.color: parent.activeFocus ? "white" : "#7f8c8d"
-                        }
-
-                        validator: RegularExpressionValidator {
-                            regularExpression: /^[#0-9A-Fa-f]{0,7}$/
-                        }
-
-                        onTextChanged: {
-                            if (text.length > 0 && text[0] !== '#') {
-                                text = '#' + text.replace(/[^0-9A-Fa-f#]/g, '')
-                            }
-                            if (text.lastIndexOf('#') > 0) {
-                                text = '#' + text.replace(/#/g, '')
-                            }
-                            if (text.match(/^#[0-9A-Fa-f]{6}$/)) {
-                                colorPreview.color = text
-                            }
-                        }
-
-                        onAccepted: {
-                            if (text.match(/^#[0-9A-Fa-f]{6}$/)) {
-                                root.dotColor = text
+                            ColorAnimation {
+                                duration: 150
+                                easing.type: Easing.OutCubic
                             }
                         }
                     }
-                    Rectangle {
-                        id: colorPreview
-                        width: 30
-                        height: 30
-                        radius: 5
-                        color: "#98db80"
-                        border.color: "white"
-                    }
-                }
 
-                // 점 불투명도
-                RowLayout {
-                    Layout.fillWidth: true
-                    Label { text: "불투명도"; color: "white"; Layout.preferredWidth: 80 }
-
-                    TextField {
-                        id: opacityInput
-                        text: "50"
-                        maximumLength: 3
-                        Layout.preferredWidth: 60
-                        color: "white"
-                        font.family: "monospace"
-                        horizontalAlignment: Text.AlignHCenter
-                        background: Rectangle {
-                            color: "#34495e"
-                            radius: 5
-                            border.color: parent.activeFocus ? "white" : "#7f8c8d"
+                    Loader {
+                        id: contentLoader
+                        anchors.fill: parent
+                        sourceComponent: {
+                            switch (settings.menuIndex) {
+                            case 0:
+                                return dotComponent;
+                            case 1:
+                                return crossComponent;
+                            case 2:
+                                return aboutComponent;
+                            default:
+                                return dotComponent;
+                            }
                         }
 
-                        validator: IntValidator { bottom: 0; top: 100 }
+                        // ❌ 속성을 욱여넣던 불필요한 바인딩 코드가 모두 사라졌습니다!
+                        Component {
+                            id: dotComponent
+                            DotContent {
+                                anchors.fill: parent
+                            }
+                        }
 
-                        onTextChanged: {
-                            text = text.replace(/[^0-9]/g, '')
-                            if (text.length > 0 && parseInt(text) > 100) {
-                                text = "100"
+                        Component {
+                            id: crossComponent
+                            CrossContent {
+                                anchors.fill: parent
+                            }
+                        }
+
+                        Component {
+                            id: aboutComponent
+                            AboutContent {
+                                anchors.fill: parent
                             }
                         }
                     }
-                    Label { text: "%"; color: "white" }
-                }
-
-                // 간격
-                RowLayout {
-                    Layout.fillWidth: true
-                    Label { text: "간격 (px)"; color: "white"; Layout.preferredWidth: 80 }
-                    SpinBox {
-                        id: spacingSpinBox
-                        from: 20
-                        to: 200
-                        value: 50
-                        stepSize: 10
-                        editable: true
-                    }
-                }
-
-                // 여백
-                RowLayout {
-                    Layout.fillWidth: true
-                    Label { text: "여백 (px)"; color: "white"; Layout.preferredWidth: 80 }
-                    SpinBox {
-                        id: paddingSpinBox
-                        from: 0
-                        to: 200
-                        value: 50
-                        stepSize: 10
-                        editable: true
-                    }
-                }
-
-                // 남은 하단 여백을 채워서 위쪽 요소들을 위로 밀어올리는 역할
-                Item {
-                    Layout.fillWidth: true
-                    Layout.fillHeight: true
                 }
             }
         }
-    }
 
-    DropShadow {
-        anchors.fill: background
-        source: background
-
-        horizontalOffset: 0
-        verticalOffset: 4
-        radius: 24
-        samples: 49           // 공식 권장값: radius * 2 + 1
-        color: "#30000000"    // 핵심! 완전한 검은색이 아닌 반투명한 검은색을 써야 합니다.
-    }
-
-    // 외부에서 색상 설정할 때 동기화
-    onDotColorChanged: {
-        colorInput.text = dotColor.toString().toUpperCase()
-        colorPreview.color = dotColor
-    }
-
-    onDotOpacityChanged: {
-        opacityInput.text = Math.round(dotOpacity * 100)
+        DropShadow {
+            anchors.fill: background
+            source: background
+            horizontalOffset: 0
+            verticalOffset: 4
+            radius: 24
+            samples: 49
+            color: "#30000000"
+        }
     }
 }

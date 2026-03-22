@@ -1,0 +1,220 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 53,
+                        "durationMicroseconds": 10717,
+                        "errorMessage": "",
+                        "functionName": "duration",
+                        "line": 5
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 86,
+                        "durationMicroseconds": 170,
+                        "errorMessage": "",
+                        "functionName": "type",
+                        "line": 5
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 54,
+                        "durationMicroseconds": 136,
+                        "errorMessage": "",
+                        "functionName": "duration",
+                        "line": 6
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 87,
+                        "durationMicroseconds": 99,
+                        "errorMessage": "",
+                        "functionName": "type",
+                        "line": 6
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 54,
+                        "durationMicroseconds": 1130,
+                        "errorMessage": "",
+                        "functionName": "duration",
+                        "line": 7
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 87,
+                        "durationMicroseconds": 103,
+                        "errorMessage": "",
+                        "functionName": "type",
+                        "line": 7
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 61,
+                        "durationMicroseconds": 96,
+                        "errorMessage": "",
+                        "functionName": "duration",
+                        "line": 8
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 94,
+                        "durationMicroseconds": 100,
+                        "errorMessage": "",
+                        "functionName": "type",
+                        "line": 8
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 62,
+                        "durationMicroseconds": 112,
+                        "errorMessage": "",
+                        "functionName": "duration",
+                        "line": 9
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 95,
+                        "durationMicroseconds": 91,
+                        "errorMessage": "",
+                        "functionName": "type",
+                        "line": 9
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 64,
+                        "durationMicroseconds": 91,
+                        "errorMessage": "",
+                        "functionName": "duration",
+                        "line": 10
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 97,
+                        "durationMicroseconds": 106,
+                        "errorMessage": "",
+                        "functionName": "type",
+                        "line": 10
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 65,
+                        "durationMicroseconds": 131,
+                        "errorMessage": "",
+                        "functionName": "duration",
+                        "line": 11
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 98,
+                        "durationMicroseconds": 91,
+                        "errorMessage": "",
+                        "functionName": "type",
+                        "line": 11
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 52,
+                        "durationMicroseconds": 114,
+                        "errorMessage": "",
+                        "functionName": "duration",
+                        "line": 12
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 85,
+                        "durationMicroseconds": 140,
+                        "errorMessage": "",
+                        "functionName": "type",
+                        "line": 12
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 55,
+                        "durationMicroseconds": 112,
+                        "errorMessage": "",
+                        "functionName": "duration",
+                        "line": 13
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 88,
+                        "durationMicroseconds": 80,
+                        "errorMessage": "",
+                        "functionName": "type",
+                        "line": 13
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 65,
+                        "durationMicroseconds": 95,
+                        "errorMessage": "",
+                        "functionName": "duration",
+                        "line": 14
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 98,
+                        "durationMicroseconds": 86,
+                        "errorMessage": "",
+                        "functionName": "type",
+                        "line": 14
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 68,
+                        "durationMicroseconds": 966,
+                        "errorMessage": "",
+                        "functionName": "duration",
+                        "line": 15
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 101,
+                        "durationMicroseconds": 161,
+                        "errorMessage": "",
+                        "functionName": "type",
+                        "line": 15
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 66,
+                        "durationMicroseconds": 125,
+                        "errorMessage": "",
+                        "functionName": "duration",
+                        "line": 16
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 99,
+                        "durationMicroseconds": 98,
+                        "errorMessage": "",
+                        "functionName": "type",
+                        "line": 16
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 67,
+                        "durationMicroseconds": 111,
+                        "errorMessage": "",
+                        "functionName": "duration",
+                        "line": 17
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 100,
+                        "durationMicroseconds": 106,
+                        "errorMessage": "",
+                        "functionName": "type",
+                        "line": 17
+                    }
+                ],
+                "filepath": "C:/Users/roscoe/Documents/3DSickDoctor/CrossArm.qml"
+            }
+        ],
+        "moduleId": "threeSickDoctor(app3DSickDoctor)"
+    }
+]

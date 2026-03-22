@@ -10,7 +10,11 @@ qt_standard_project_setup(REQUIRES 6.8)
 
 qt_add_executable(app3DSickDoctor
     main.cpp
+    configmanager.h
+    configmanager.cpp
 )
+
+set_source_files_properties(Theme.qml PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
 
 qt_add_qml_module(app3DSickDoctor
     URI threeSickDoctor
@@ -18,6 +22,12 @@ qt_add_qml_module(app3DSickDoctor
     QML_FILES
         Main.qml
         Settings.qml
+        DotContent.qml
+        CrossContent.qml
+        AboutContent.qml
+        ColorBar.qml
+        Theme.qml
+        CrossArm.qml
     RESOURCES
         assets/Settings.png
         # assets/Sf.ttf

@@ -1,2 +1,40 @@
 [
+    {
+        "classes": [
+            {
+                "className": "ConfigManager",
+                "lineNumber": 28,
+                "methods": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "configMap",
+                                "type": "QVariantMap"
+                            }
+                        ],
+                        "index": 0,
+                        "name": "save",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "index": 1,
+                        "name": "load",
+                        "returnType": "QVariantMap"
+                    }
+                ],
+                "object": true,
+                "qualifiedClassName": "ConfigManager",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "main.cpp",
+        "outputRevision": 68
+    }
 ]

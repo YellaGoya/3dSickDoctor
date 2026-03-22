@@ -1,0 +1,12 @@
+module threeSickDoctor
+typeinfo app3DSickDoctor.qmltypes
+prefer :/qt/qml/threeSickDoctor/
+Main 1.0 Main.qml
+Settings 1.0 Settings.qml
+DotContent 1.0 DotContent.qml
+CrossContent 1.0 CrossContent.qml
+AboutContent 1.0 AboutContent.qml
+ColorBar 1.0 ColorBar.qml
+singleton Theme 1.0 Theme.qml
+CrossArm 1.0 CrossArm.qml
+

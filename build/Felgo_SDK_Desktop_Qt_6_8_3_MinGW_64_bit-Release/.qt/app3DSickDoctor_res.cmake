@@ -1,0 +1,9 @@
+
+set(target "app3DSickDoctor")
+set(working_dir "C:/Users/roscoe/Documents/3DSickDoctor")
+set(src_and_dest_list
+    "C:/Users/roscoe/Documents/3DSickDoctor/assets/Settings.png"
+    "C:/Users/roscoe/Documents/3DSickDoctor/build/Felgo_SDK_Desktop_Qt_6_8_3_MinGW_64_bit-Release/threeSickDoctor/assets/Settings.png"
+
+)
+set(timestamp_file "C:/Users/roscoe/Documents/3DSickDoctor/build/Felgo_SDK_Desktop_Qt_6_8_3_MinGW_64_bit-Release/.qt/app3DSickDoctor_res.txt")

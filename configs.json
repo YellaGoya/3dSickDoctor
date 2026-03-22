@@ -1,0 +1,23 @@
+{
+    "cross": {
+        "centerEnabled": false,
+        "color": "#ffffff",
+        "enabled": true,
+        "horizontalPadding": 40,
+        "innerRadius": 50,
+        "length": 120,
+        "opacity": 0.15,
+        "outerRadius": 8,
+        "verticalPadding": 40,
+        "weight": 30
+    },
+    "dot": {
+        "centerEnabled": false,
+        "color": "#30a9c2",
+        "enabled": true,
+        "opacity": 1,
+        "padding": 50,
+        "size": 15,
+        "spacing": 90
+    }
+}

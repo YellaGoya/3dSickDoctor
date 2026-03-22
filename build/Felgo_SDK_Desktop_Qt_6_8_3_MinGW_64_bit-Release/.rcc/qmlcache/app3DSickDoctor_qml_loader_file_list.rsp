@@ -1,0 +1,12 @@
+--resource
+C:/Users/roscoe/Documents/3DSickDoctor/build/Felgo_SDK_Desktop_Qt_6_8_3_MinGW_64_bit-Release/.qt/rcc/qmake_threeSickDoctor.qrc
+--resource
+C:/Users/roscoe/Documents/3DSickDoctor/build/Felgo_SDK_Desktop_Qt_6_8_3_MinGW_64_bit-Release/.qt/rcc/app3DSickDoctor_raw_qml_0.qrc
+/qt/qml/threeSickDoctor/Main.qml
+/qt/qml/threeSickDoctor/Settings.qml
+/qt/qml/threeSickDoctor/DotContent.qml
+/qt/qml/threeSickDoctor/CrossContent.qml
+/qt/qml/threeSickDoctor/AboutContent.qml
+/qt/qml/threeSickDoctor/ColorBar.qml
+/qt/qml/threeSickDoctor/Theme.qml
+/qt/qml/threeSickDoctor/CrossArm.qml

@@ -1,0 +1,20 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "toHex",
+                        "line": 35
+                    }
+                ],
+                "filepath": "C:/Users/roscoe/Documents/3DSickDoctor/Theme.qml"
+            }
+        ],
+        "moduleId": "threeSickDoctor(app3DSickDoctor)"
+    }
+]

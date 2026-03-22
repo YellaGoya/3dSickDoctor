@@ -1,3 +1,4 @@
+#include "configmanager.h"
 #include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QQuickWindow>
@@ -6,6 +7,7 @@
 #include <QMenu>
 #include <QAction>
 #include <QStyle>
+#include <QQmlContext>
 
 #ifdef Q_OS_WIN
 #include <windows.h>
@@ -15,11 +17,10 @@
 
 int main(int argc, char *argv[])
 {
-    // 투명 윈도우 지원
     QQuickWindow::setDefaultAlphaBuffer(true);
 
     QApplication app(argc, argv);
-    app.setQuitOnLastWindowClosed(false); // 트레이에서도 유지
+    app.setQuitOnLastWindowClosed(false);
 
     // 시스템 트레이 아이콘
     QSystemTrayIcon trayIcon;
@@ -38,21 +39,23 @@ int main(int argc, char *argv[])
     trayIcon.show();
 
     QQmlApplicationEngine engine;
+
+    ConfigManager configManager;
+    engine.rootContext()->setContextProperty("configManager", &configManager);
+
     QObject::connect(
         &engine,
         &QQmlApplicationEngine::objectCreationFailed,
         &app,
         []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
+
     engine.loadFromModule("threeSickDoctor", "Main");
 
-    // 종료 연결
     QObject::connect(quitAction, &QAction::triggered, &app, &QApplication::quit);
 
-    // 토글 상태
     bool dotsVisible = true;
 
-    // Windows에서 강제 최상단 유지
 #ifdef Q_OS_WIN
     QTimer topMostTimer;
     QObject::connect(&topMostTimer, &QTimer::timeout, [&engine, &dotsVisible]() {
@@ -69,7 +72,6 @@ int main(int argc, char *argv[])
     topMostTimer.start(100);
 #endif
 
-    // 토글 연결
     QObject::connect(toggleAction, &QAction::triggered, [&engine, &dotsVisible, toggleAction]() {
         dotsVisible = !dotsVisible;
         toggleAction->setChecked(!dotsVisible);
@@ -81,11 +83,18 @@ int main(int argc, char *argv[])
         }
     });
 
-    // 설정창 연결
-    QObject::connect(settingsAction, &QAction::triggered, [&engine]() {
+    auto openSettingsFn = [&engine]() {
         auto roots = engine.rootObjects();
         for (auto* root : roots) {
             QMetaObject::invokeMethod(root, "openSettings");
+        }
+    };
+
+    QObject::connect(settingsAction, &QAction::triggered, openSettingsFn);
+
+    QObject::connect(&trayIcon, &QSystemTrayIcon::activated, [openSettingsFn](QSystemTrayIcon::ActivationReason reason) {
+        if (reason == QSystemTrayIcon::DoubleClick) {
+            openSettingsFn();
         }
     });
 
